@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+Vagrant.configure("2") do |config|
+
+ config.vbguest.auto_update = false
+
+
+	 config.vm.define "win1" do |win1|
+		win1.vm.box = "cdaf/WindowsServerCore"
+		win1.vm.network "private_network", ip: "192.168.7.17", virtualbox__intnet: "network_os"
+		win1.vm.hostname = "windows1"
+	 end
+	 
+	 config.vm.define "win2" do |win2|
+		win2.vm.box = "gusztavvargadr/windows-server"
+		win2.vm.network "private_network", ip: "192.168.7.27", virtualbox__intnet: "network_os"
+		win2.vm.hostname = "windows2"
+	 end
+ end
